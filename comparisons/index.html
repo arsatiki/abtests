@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bayesian A/B testing</title>
+	<script type="text/javascript" src="bayes.js"></script>
+	<script type="text/javascript" src="plot.js"></script>
+	
+
+<style type="text/css">
+body {background: gray;}
+
+#main {
+	margin: auto;
+	width: 640px;
+}
+
+canvas#bayes {
+	outline: 1px black;
+	width: 640px;
+	height: 640px;
+	background: white;
+}
+
+#xcoord {width: 640px;}
+#ycoord {width: 640px;}
+
+
+</style>
+
+</head>
+<body>
+	<div id="main">
+		<canvas id="bayes" width=640 height=640></canvas>
+		<input type="range" min="1" max="1000"
+			steps="10" id="xcoord">
+		<input type="range" min="1" max="1000"
+			steps="10" id="ycoord">
+			
+	</div>
+	
+</body>
+</html>
