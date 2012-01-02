@@ -20,8 +20,7 @@ def hiter(a, b, c, d):
         yield h(a, b, c, d) / d
 
 def g(a, b, c, d):
-    # TODO: Spin out prior pseudocounts
-    return g0(a+1, b+1, c+1) + sum(hiter(a+1, b+1, c+1, d+1))
+    return g0(a, b, c) + sum(hiter(a, b, c, d))
 
 def print_odds(p):
     o = p / (1 - p)
@@ -41,7 +40,7 @@ def main():
     
     s1, f1, s2, f2 = map(int, sys.argv[1:])
 
-    print_odds(g(s1, f1, s2, f2))
+    print_odds(g(s1+1, f1+1, s2+1, f2+1))
 
 if __name__ == "__main__":
     main()
