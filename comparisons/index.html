@@ -12,31 +12,39 @@ body {background: gray;}
 #main {
 	margin: auto;
 	width: 640px;
+	position: relative;
 }
 
 canvas#bayes {
 	outline: 1px black;
-	width: 640px;
-	height: 640px;
+	width: 480px;
+	height: 480px;
 	background: white;
 }
 
-#xcoord {width: 640px;}
-#ycoord {width: 640px;}
+#xcoord {
+	width: 480px;
+	margin-top: 8px;
+}
+#ycoord {
+	height: 480px;
+	width: 16px;
+	-webkit-appearance: slider-vertical;
+	position: absolute;
+	left: -24px;
+	top: 0px;
+}
 
 
 </style>
 
 </head>
-<body>
+<body onload="normalize('bayes', 'xcoord', 'ycoord')">
 	<div id="main">
-		<canvas id="bayes" width=640 height=640></canvas>
-		<input type="range" min="1" max="1000"
-			steps="10" id="xcoord">
-		<input type="range" min="1" max="1000"
-			steps="10" id="ycoord">
-			
-	</div>
+		<canvas id="bayes" width=100 height=100></canvas>
+		<input type="range" min="0" id="xcoord" name="xcoord">
+		<input type="range" min="0" id="ycoord">
+		<button onclick="process('bayes', 'xcoord', 'ycoord', 100); return false;">DO IT</button>
 	
 </body>
 </html>

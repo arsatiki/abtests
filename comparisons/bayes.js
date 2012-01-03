@@ -39,9 +39,3 @@ function g(a, b, c, d) {
 function Pagtb(s1, f1, s2, f2) {
         return g(s1+1, f1+1, s2+1, f2+1);
 }
-
-function plottable(a, b) {
-        return function(c, d) {
-                return Pagtb(a, b, c, d);
-        };
-}
