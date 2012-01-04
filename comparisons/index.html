@@ -16,11 +16,17 @@ body {background: gray;}
 	position: relative;
 }
 
-canvas#bayes {
-	outline: 1px black;
+#gtest {
+	position: absolute;
+}
+
+#bayes {
+	background: white;
+}
+
+canvas {
 	width: 480px;
 	height: 480px;
-	background: white;
 }
 
 #xcoord {
@@ -43,6 +49,7 @@ canvas#bayes {
 <body onload="normalize('bayes', 'xcoord', 'ycoord')">
 	<div id="main">
 		<canvas id="bayes" width=100 height=100></canvas>
+		<canvas id="gtest" width=100 height=100></canvas>
 		<input type="range" min="0" id="xcoord" name="xcoord">
 		<input type="range" min="0" id="ycoord">
 		<button onclick="process('bayes', 'xcoord', 'ycoord', 100); return false;">DO IT</button>
