@@ -32,7 +32,7 @@ function grayplot(canvas, s1, f1, n) {
         var w = canvas.width / n;
         var h = canvas.height / n;
 
-        var worker = new Worker('bayesworker.js');
+        var worker = new Worker('plotworker.js');
 
         worker.onmessage = function(event) {
                 var x = event.data.x;
@@ -48,7 +48,7 @@ function grayplot(canvas, s1, f1, n) {
                 throw error;
         }
 
-        worker.postMessage({a:s1, b:f1,
+        worker.postMessage({a: s1, b: f1, funcname: "bayes",
                         cs: intpoints(canvas.width, n), 
                         ds: intpoints(canvas.height, n)});
 
