@@ -37,7 +37,8 @@ function assignWorker(canvas, f, colormap, succ, fail) {
         };
 
         worker.onerror = function(error) {
-                console.log("Worker error: " + error.message);
+                if (console)
+                        console.log("Worker error: " + error.message);
                 throw error;
         }
 
