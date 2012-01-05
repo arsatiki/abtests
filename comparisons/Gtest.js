@@ -37,3 +37,8 @@ function chi2dof1(a) {
                     return p[i - 1];
     return p[p.length - 1];
 }
+
+function PGgtX(a, b, c, d) {
+        var G = gtest(a, b, c, d);
+        return chi2dof1(G);
+}

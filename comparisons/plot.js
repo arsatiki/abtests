@@ -7,6 +7,10 @@ function bayescoloring(p) {
                :"hsl(120, 50% ,50%)";
 }
 
+function gtestcoloring(p) {
+        return (p < .05)? "rgba(0,0,0,0)" : "black";
+}
+
 function intpoints(end, n) {
         var r = [];
         var rtrue = 0;
@@ -17,16 +21,7 @@ function intpoints(end, n) {
         return r;
 }
 
-function grayplot(canvas, s1, f1, n) {
-        var colors = [
-                "hsl(0, 50%, 50%)",
-                "hsl(24, 50%, 50%)",
-                "hsl(48, 50%, 50%)",
-                "hsl(72, 50%, 50%)",
-                "hsl(96, 50%, 50%)",
-                "hsl(120, 50% ,50%)"
-        ];
-
+function assignWorker(canvas, f, colormap, succ, fail, n) {
         var ctx = canvas.getContext("2d");
         
         var w = canvas.width / n;
@@ -38,7 +33,7 @@ function grayplot(canvas, s1, f1, n) {
                 var x = event.data.x;
                 var y = event.data.y;
 
-                ctx.fillStyle = filler(event.data.p, colors);
+                ctx.fillStyle = colormap(event.data.p)
                 ctx.fillRect(x, canvas.height - y - h, w+1, h+1);
         
         };
@@ -48,26 +43,24 @@ function grayplot(canvas, s1, f1, n) {
                 throw error;
         }
 
-        worker.postMessage({a: s1, b: f1, funcname: "bayes",
-                        cs: intpoints(canvas.width, n), 
-                        ds: intpoints(canvas.height, n)});
+        worker.postMessage({c: succ, d: fail, funcname: f,
+                        as: intpoints(canvas.width, n), 
+                        bs: intpoints(canvas.height, n)});
 
 }
 
-function process(cid, xid, yid, n) {
-        var canvas = document.getElementById(cid);
-        var xslider = document.getElementById(xid);
-        var yslider = document.getElementById(yid);
+function process(n) {
+        var xslider = document.getElementById('xcoord');
+        var yslider = document.getElementById('ycoord');
         
-        var s1 = parseInt(xslider.value);
-        var f1 = parseInt(yslider.value);
+        var succ = parseInt(xslider.value);
+        var fail = parseInt(yslider.value);
         
-        grayplot(canvas, s1, f1, n);
+        assignWorker(document.getElementById('bayes'), 
+                "bayes", bayescoloring, succ, fail, n);
         
-        canvas = document.getElementById('gtest');
-        var ctx = canvas.getContext("2d");
-        ctx.fillStyle = "black";
-        ctx.fillRect(25, 25, 50, 50);
+        assignWorker(document.getElementById('gtest'),
+                "gtest", gtestcoloring, succ, fail, n);
 }
 
 function normalize(cid, xid, yid) {

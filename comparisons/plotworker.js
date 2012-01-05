@@ -1,18 +1,19 @@
 importScripts('bayes.js');
+importScripts('Gtest.js');
 
-var ___FUNCTIONS___ = {"bayes": Pagtb};
+var ___FUNCTIONS___ = {"bayes": Pagtb, "gtest": PGgtX};
 
 onmessage = function (event) {
         var n = event.data.n;
-        var a = event.data.a;
-        var b = event.data.b;
-        var cs = event.data.cs;
-        var ds = event.data.ds;
+        var c = event.data.c;
+        var d = event.data.d;
+        var as = event.data.as;
+        var bs = event.data.bs;
         var f = ___FUNCTIONS___[event.data.funcname]
         var i, j;
 
-        for (i = 0; i < cs.length; i++)
-                for (j = 0; j < ds.length; j++ )
-                        self.postMessage({p: f(a, b, cs[i], ds[j]), 
-                                          x:cs[i], y:ds[j]});
+        for (i = 0; i < as.length; i++)
+                for (j = 0; j < bs.length; j++ )
+                        self.postMessage({p: f(as[i], bs[j], c, d), 
+                                          x:as[i], y:bs[j]});
 }

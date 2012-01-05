@@ -2,10 +2,9 @@
 <html>
 <head>
 	<title>Bayesian A/B testing</title>
-	<script type="text/javascript" src="bayes.js"></script>
 	<script type="text/javascript" src="plot.js"></script>
+	<script type="text/javascript" src="bayes.js"></script>
 	<script type="text/javascript" src="Gtest.js"></script>
-	
 
 <style type="text/css">
 body {background: gray;}
@@ -53,9 +52,9 @@ canvas {
 	<div id="main">
 		<canvas id="bayes" width=100 height=100></canvas>
 		<canvas id="gtest" width=100 height=100></canvas>
-		<input type="range" min="0" id="xcoord" name="xcoord">
+		<input type="range" min="0" id="xcoord">
 		<input type="range" min="0" id="ycoord">
-		<button onclick="process('bayes', 'xcoord', 'ycoord', 100); return false;">DO IT</button>
-	
+		<button onclick="process(100); return false;">DO IT</button>
+	</div>
 </body>
 </html>
