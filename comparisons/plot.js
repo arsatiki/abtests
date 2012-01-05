@@ -63,6 +63,11 @@ function process(cid, xid, yid, n) {
         var f1 = parseInt(yslider.value);
         
         grayplot(canvas, s1, f1, n);
+        
+        canvas = document.getElementById('gtest');
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "black";
+        ctx.fillRect(25, 25, 50, 50);
 }
 
 function normalize(cid, xid, yid) {
