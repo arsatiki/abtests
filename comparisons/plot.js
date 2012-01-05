@@ -39,7 +39,7 @@ function grayplot(canvas, s1, f1, n) {
                 var y = event.data.y;
 
                 ctx.fillStyle = filler(event.data.p, colors);
-                ctx.fillRect(x, canvas.height - y - h, w, h);
+                ctx.fillRect(x, canvas.height - y - h, w+1, h+1);
         
         };
 
