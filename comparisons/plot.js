@@ -1,10 +1,10 @@
-function filler(p, colors) {
-        return  (p < .5)? colors[0]
-               :(p < .75)? colors[1]
-               :(p < .9091)? colors[2]
-               :(p < .9677)? colors[3]
-               :(p < .9901)? colors[4]
-               :colors[5];
+function bayescoloring(p) {
+        return  (p < .5)? "hsl(0, 50%, 50%)"
+               :(p < .75)? "hsl(24, 50%, 50%)"
+               :(p < .9091)? "hsl(48, 50%, 50%)"
+               :(p < .9677)? "hsl(72, 50%, 50%)"
+               :(p < .9901)? "hsl(96, 50%, 50%)"
+               :"hsl(120, 50% ,50%)";
 }
 
 function intpoints(end, n) {
