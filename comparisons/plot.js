@@ -61,12 +61,3 @@ function process(n) {
         assignWorker(document.getElementById('gtest'),
                 "gtest", gtestcoloring, succ, fail);
 }
-
-function normalize(cid, xid, yid) {
-        var canvas = document.getElementById(cid);
-        var xslider = document.getElementById(xid);
-        var yslider = document.getElementById(yid);
-        
-        xslider.max = canvas.width; xslider.value = xslider.max / 2;
-        yslider.max = canvas.height; yslider.value = yslider.max / 2;
-}

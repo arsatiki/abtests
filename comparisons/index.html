@@ -7,8 +7,19 @@
 	<script type="text/javascript" src="bayes.js"></script>
 	<script type="text/javascript" src="Gtest.js"></script>
 
+	<script type="text/javascript">
+	function normalize(cid, xid, yid) {
+	        var canvas = document.getElementById('bayes');
+	        var xslider = document.getElementById('xcoord');
+	        var yslider = document.getElementById('ycoord');
+
+	        xslider.max = canvas.width; xslider.value = xslider.max / 2;
+	        yslider.max = canvas.height; yslider.value = yslider.max / 2;
+	}
+	</script>
+
 </head>
-<body onload="normalize('bayes', 'xcoord', 'ycoord')">
+<body onload="normalize()">
 	<div id="main">
 		<div id="graph">
 			<canvas id="bayes" width=50 height=50></canvas>
