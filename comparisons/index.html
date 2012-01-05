@@ -7,18 +7,25 @@
 	<script type="text/javascript" src="Gtest.js"></script>
 
 <style type="text/css">
-body {background: gray;}
+body {background: white;}
 
 #main {
 	margin: auto;
-	width: 640px;
+	margin-top: 2em;
+	width: 501px;
+}
+
+#graph {
+	margin: auto;
 	position: relative;
+	width: 501px; height: 501px;
 }
 
 #gtest {
 	position: absolute;
+	top: 0;
 	z-index: 1;
-	opacity: 0.5;
+	opacity: 0.3;
 }
 
 #bayes {
@@ -27,34 +34,122 @@ body {background: gray;}
 }
 
 canvas {
-	width: 480px;
-	height: 480px;
+	width: 500px;
+	height: 500px;
+	
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
 }
 
 #xcoord {
-	width: 480px;
-	margin-top: 8px;
+	width: 500px;
+	bottom: -4em;
+	left: 0;
+	position: absolute;
 }
 #ycoord {
-	height: 480px;
+	height: 500px;
 	width: 16px;
 	-webkit-appearance: slider-vertical;
 	position: absolute;
-	left: -24px;
+	left: -4em;
 	top: 0px;
 }
 
+#xrange, #yrange {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
 
+#xrange { top: 501px; }
+
+#xrange li {
+	position: absolute;
+	padding-left: 5px;
+	border-left: 1px solid black;
+}
+
+#yrange {
+	top: 0;
+	height: 501px;
+	left: -1.33em;
+}
+
+#yrange li {
+	position: absolute;
+	border-bottom: 1px solid black;
+	text-align: center;
+	width: 1.33em;
+}
+
+.x0 {left: 0;} 
+.x_1 {left: 50px;}
+.x_2 {left: 100px;}
+.x_3 {left: 150px;}
+.x_4 {left: 200px;}
+.x_5 {left: 250px;}
+.x_6 {left: 300px;}
+.x_7 {left: 350px;}
+.x_8 {left: 400px;}
+.x_9 {left: 450px;}
+.x1 {left: 500px;}
+
+.y0 {bottom: 0;} 
+.y_1 {bottom: 50px;}
+.y_2 {bottom: 100px;}
+.y_3 {bottom: 150px;}
+.y_4 {bottom: 200px;}
+.y_5 {bottom: 250px;}
+.y_6 {bottom: 300px;}
+.y_7 {bottom: 350px;}
+.y_8 {bottom: 400px;}
+.y_9 {bottom: 450px;}
+.y1 {bottom: 500px;}
+
+button {margin-top: 5em;}
 </style>
 
 </head>
 <body onload="normalize('bayes', 'xcoord', 'ycoord')">
 	<div id="main">
-		<canvas id="bayes" width=100 height=100></canvas>
-		<canvas id="gtest" width=100 height=100></canvas>
-		<input type="range" min="0" id="xcoord">
-		<input type="range" min="0" id="ycoord">
+		<div id="graph">
+			<canvas id="bayes" width=50 height=50></canvas>
+			<canvas id="gtest" width=50 height=50></canvas>
+			<input type="range" min="0" id="xcoord">
+			<input type="range" min="0" id="ycoord">
+
+			<ul id="xrange">
+				<li class="x0">0</li>
+				<li class="x_1">5</li>
+				<li class="x_2">10</li>
+				<li class="x_3">15</li>
+				<li class="x_4">20</li>
+				<li class="x_5">25</li>
+				<li class="x_6">30</li>
+				<li class="x_7">35</li>
+				<li class="x_8">40</li>
+				<li class="x_9">45</li>
+				<li class="x1">50</li>
+			</ul>
+			<ul id="yrange">
+				<li class="y0">0</li>
+				<li class="y_1">5</li>
+				<li class="y_2">10</li>
+				<li class="y_3">15</li>
+				<li class="y_4">20</li>
+				<li class="y_5">25</li>
+				<li class="y_6">30</li>
+				<li class="y_7">35</li>
+				<li class="y_8">40</li>
+				<li class="y_9">45</li>
+				<li class="y1">50</li>
+			</ul>
+		</div>
+
 		<button onclick="process(100); return false;">DO IT</button>
+
 	</div>
 </body>
 </html>

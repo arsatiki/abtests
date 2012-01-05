@@ -8,25 +8,23 @@ function bayescoloring(p) {
 }
 
 function gtestcoloring(p) {
-        return (p < .05)? "rgba(0,0,0,0)" : "black";
+        return (p < .05)? "rgba(0,0,0,0)" : "#000";
 }
 
-function intpoints(end, n) {
+function range(n) {
         var r = [];
-        var rtrue = 0;
-        while (rtrue < end) {
-                r[r.length] = Math.floor(rtrue);
-                rtrue += end / n;
-        }
+        var i;
+        for (i = 0; i < n; i++)
+                r[r.length] = i;
+
         return r;
 }
 
-function assignWorker(canvas, f, colormap, succ, fail, n) {
+function assignWorker(canvas, f, colormap, succ, fail) {
         var ctx = canvas.getContext("2d");
-        
-        var w = canvas.width / n;
-        var h = canvas.height / n;
 
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
         var worker = new Worker('plotworker.js');
 
         worker.onmessage = function(event) {
@@ -34,7 +32,7 @@ function assignWorker(canvas, f, colormap, succ, fail, n) {
                 var y = event.data.y;
 
                 ctx.fillStyle = colormap(event.data.p)
-                ctx.fillRect(x, canvas.height - y - h, w+1, h+1);
+                ctx.fillRect(x, canvas.height - y - 1, 2, 2);
         
         };
 
@@ -44,8 +42,8 @@ function assignWorker(canvas, f, colormap, succ, fail, n) {
         }
 
         worker.postMessage({c: succ, d: fail, funcname: f,
-                        as: intpoints(canvas.width, n), 
-                        bs: intpoints(canvas.height, n)});
+                        as: range(canvas.width), 
+                        bs: range(canvas.height)});
 
 }
 
@@ -57,10 +55,10 @@ function process(n) {
         var fail = parseInt(yslider.value);
         
         assignWorker(document.getElementById('bayes'), 
-                "bayes", bayescoloring, succ, fail, n);
+                "bayes", bayescoloring, succ, fail);
         
         assignWorker(document.getElementById('gtest'),
-                "gtest", gtestcoloring, succ, fail, n);
+                "gtest", gtestcoloring, succ, fail);
 }
 
 function normalize(cid, xid, yid) {
@@ -68,6 +66,6 @@ function normalize(cid, xid, yid) {
         var xslider = document.getElementById(xid);
         var yslider = document.getElementById(yid);
         
-        xslider.max = canvas.width;
-        yslider.max = canvas.height;
+        xslider.max = canvas.width; xslider.value = xslider.max / 2;
+        yslider.max = canvas.height; yslider.value = yslider.max / 2;
 }
