@@ -8,7 +8,7 @@ function bayescoloring(p) {
 }
 
 function gtestcoloring(p) {
-        return (p < .05)? "rgba(0,0,0,0)" : "#000";
+        return (p <= .05)? "rgba(0,0,0,0)" : "#000";
 }
 
 function range(n) {
