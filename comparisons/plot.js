@@ -20,7 +20,7 @@ function range(n) {
         return r;
 }
 
-function assignWorker(canvas, f, colormap, succ, fail) {
+function assignPlotter(canvas, f, colormap, succ, fail) {
         var ctx = canvas.getContext("2d");
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -46,18 +46,4 @@ function assignWorker(canvas, f, colormap, succ, fail) {
                         as: range(canvas.width), 
                         bs: range(canvas.height)});
 
-}
-
-function process(n) {
-        var xslider = document.getElementById('xcoord');
-        var yslider = document.getElementById('ycoord');
-        
-        var succ = parseInt(xslider.value);
-        var fail = parseInt(yslider.value);
-        
-        assignWorker(document.getElementById('bayes'), 
-                "bayes", bayescoloring, succ, fail);
-        
-        assignWorker(document.getElementById('gtest'),
-                "gtest", gtestcoloring, succ, fail);
 }

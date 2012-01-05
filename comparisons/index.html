@@ -16,6 +16,20 @@
 	        xslider.max = canvas.width; xslider.value = xslider.max / 2;
 	        yslider.max = canvas.height; yslider.value = yslider.max / 2;
 	}
+	
+	function process() {
+	        var xslider = document.getElementById('xcoord');
+	        var yslider = document.getElementById('ycoord');
+
+	        var succ = parseInt(xslider.value);
+	        var fail = parseInt(yslider.value);
+
+	        assignPlotter(document.getElementById('bayes'), 
+	                "bayes", bayescoloring, succ, fail);
+
+	        assignPlotter(document.getElementById('gtest'),
+	                "gtest", gtestcoloring, succ, fail);
+	}
 	</script>
 
 </head>
@@ -55,7 +69,7 @@
 			</ul>
 		</div>
 
-		<button onclick="process(100); return false;">DO IT</button>
+		<button onclick="process(); return false;">DO IT</button>
 
 	</div>
 </body>
