@@ -71,6 +71,43 @@
 
 		<button onclick="process(); return false;">DO IT</button>
 
+		<h2>Legend</h2>
+		<ul id="legend">
+			<li>Bayesian
+				<ul id="leg-bayes">
+					<li id="legb1">odds &lt; 1:1</li>
+					<li id="legb2">1:1 to 3:1</li>
+					<li id="legb3">3:1 to 10:1</li>
+					<li id="legb4">10:1 to 30:1</li>
+					<li id="legb5">30:1 to 100:1</li>
+					<li id="legb6">&gt; 100:1</li>
+				</ul>
+			</li>
+			<li>G-test
+				<ul id="leg-gtest">
+					<li id="legg1">p > 0.05</li>
+					<li id="legg2">p &lt; 0.05</li>
+				</ul>
+			</li>
+		</ul>
+			
+
+		<h2>Instructions</h2>
+		
+		 <p>The above chart is a tool for comparing a Bayesian A/B test with a
+                corresponding G-test. To use the tool, set the parameters for the B alternative
+                with the sliders. The chart will tell you the results for the Bayesian test and
+                the G-test. </p>
+		
+		 <p>The x-axis represents the number of successes. The y-axis represents the
+                number of failed trials. After you press the button, there will be two charts
+                overlaid on top of each other.</p>
+
+		<P>A point on the chart corresponds to one "A" alternative. The color (or
+                shading) tells whether the test supports (green / transparent) or rejects (red /
+                translucent black) the A alternative. The scale on the chart and the sliders is
+                the same. See the legend for the colors.</P>
+
 	</div>
 </body>
 </html>

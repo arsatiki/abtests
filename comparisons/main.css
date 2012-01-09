@@ -100,3 +100,30 @@ canvas {
 .y1 {bottom: 500px;}
 
 button {margin-top: 5em;}
+
+#legend, #legend ul {
+        margin-left: 0;
+        padding-left: 0;
+        list-style: none;
+}
+
+#legend ul {
+        margin-bottom: 1em;
+}
+
+#legend ul li {
+        width: 10em;
+        list-style: none;
+}
+
+#legg1 {background-color: transparent;}
+#legg2 {background-color: rgba(0,0,0,0.5);}
+
+#legb1 {background-color: hsl(0, 50%, 50%);}
+#legb2 {background-color: hsl(24, 50%, 50%);}
+#legb3 {background-color: hsl(48, 50%, 50%);}
+#legb4 {background-color: hsl(72, 50%, 50%);}
+#legb5 {background-color: hsl(96, 50%, 50%);}
+#legb6 {background-color: hsl(120, 50%, 50%);}
+
+
