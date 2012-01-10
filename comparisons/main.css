@@ -101,6 +101,27 @@ canvas {
 
 button {margin-top: 5em;}
 
+#xlabel, #ylabel {
+        position: absolute;
+        width: 500px;
+        text-align: center;
+}
+
+#xlabel { bottom: -4em; }
+
+#ylabel {
+        left: -4em;
+        -webkit-transform-origin: top left;
+        -webkit-transform: rotate(-90deg);
+
+        -o-transform-origin: top left;
+        -o-transform: rotate(-90deg);
+        -moz-transform-origin: top left;
+        -moz-transform: rotate(-90deg);
+        -ms-transform-origin: top left;
+        -ms-transform: rotate(-90deg);
+}
+
 #legend, #legend ul {
         margin-left: 0;
         padding-left: 0;
