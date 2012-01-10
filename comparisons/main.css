@@ -106,13 +106,17 @@ button {margin-top: 5em;}
 
 #xlabel, #ylabel {
         position: absolute;
-        width: 500px;
         text-align: center;
 }
 
-#xlabel { bottom: -4em; }
+#xlabel {
+        bottom: -4em;
+        width: 300px;
+        margin: 0 100px;
+}
 
 #ylabel {
+        width: 500px;
         left: -4em;
         -webkit-transform-origin: top left;
         -webkit-transform: rotate(-90deg);
